@@ -12,27 +12,23 @@ namespace Excel.NET_example
     {
         static void Main(string[] args)
         {
-            var fi = new FileInfo(@"c:\temp\Table_To_Object.xlsx");
+            var fi = new FileInfo(@"Notas.xlsx");
             ExcelPackage package = new ExcelPackage(fi);
             ExcelWorkbook xlWorkbook = package.Workbook;
             ExcelWorksheet WSBase = xlWorkbook.Worksheets[1];
 
             int iRowCnt = WSBase.Dimension.End.Row;
-            int iColCnt = WSBase.Dimension.End.Column;
+            int iCol = 2;// WSBase.Dimension.End.Column;
 
             int i = 0;
             try
             {
-                for (i = 2; i <= iRowCnt; i++)
+                for (i = 2; i <= 4; i++)
                 {
-                    bool rowVacia = true;
-                    for (int j = 1; j <= iColCnt; j++)
-                        if (WSBase.Cells[i, j].Value != null && WSBase.Cells[i, j].Value.ToString().Trim().Length > 0)
-                            rowVacia = false;
-                    if (rowVacia == true) continue;
+                    if (WSBase.Cells[i, iCol].Value == null || WSBase.Cells[i, iCol].Value.ToString().Trim().Length == 0)
+                        continue;
 
-                    List<string> errorFila = new List<string>();
-                    List<string> idxCol = new List<string>();
+                    Console.WriteLine("dataval: " + WSBase.Cells[i, iCol].Value);
                     /*
                     DataRow drw = dt.NewRow();
                     // ---------------- 0 - NUMERO DOCUMENTO IDENTIDAD ----------------
@@ -54,7 +50,9 @@ namespace Excel.NET_example
                     dt.Rows.Add(drw);*/
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            { Console.WriteLine("Error: " + ex.Message + " (" + ex.GetType().Name + ")"); }
+            Console.ReadKey();
         }
     }
 }
