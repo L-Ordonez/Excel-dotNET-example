@@ -12,7 +12,7 @@ namespace Excel.NET_example
     {
         static void Main(string[] args)
         {
-            var fi = new FileInfo(@"xls/Notas.xlsx");
+            var fi = new FileInfo(@"Notas.xlsx");
             ExcelPackage package = new ExcelPackage(fi);
             ExcelWorkbook xlWorkbook = package.Workbook;
             ExcelWorksheet WSBase = xlWorkbook.Worksheets[1];
