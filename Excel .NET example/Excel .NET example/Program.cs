@@ -64,7 +64,7 @@ namespace Excel.NET_example
 
             int dTono = int.Parse(WSBase.Cells[1, 1].Value.ToString());
 
-            int i = 0;
+            int i = 0; // para el bucle
 
             try
             {
