@@ -65,6 +65,7 @@ namespace Excel.NET_example
             int dTono = int.Parse(WSBase.Cells[1, 1].Value.ToString());
 
             int i = 0;
+
             try
             {
                 for (i = 2; i <= iRowCnt; i++)
